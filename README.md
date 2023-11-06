@@ -10,9 +10,9 @@ This script queries Cisco Nexus Dashboard Insights application (NDI) for the cur
 
 This script has the following dependencies:
 
-Python3
-Requests
-Json
-Pandas
+- Python3
+- Requests
+- Json
+- Pandas
 
 
