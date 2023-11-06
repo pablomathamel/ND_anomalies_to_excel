@@ -3,10 +3,10 @@ import json
 import pandas as pd
 
 #Modify these values to match your environment
-nd_cluster=${{ secrets.nd_cluster }}
-nd_auth_domain=${{ secrets.nd_auth_domain }}
-nd_user=${{ secrets.nd_user }}
-nd_pwd=${{ secrets.nd_pwd }}
+nd_cluster="nd_cluster"
+nd_auth_domain="nd_auth_domain"
+nd_user="nd_user"
+nd_pwd="nd_pwd"
 ##
 
 def get_token():  
