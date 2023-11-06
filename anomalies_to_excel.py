@@ -21,9 +21,9 @@ def get_token():
    }
    requests.packages.urllib3.disable_warnings()
    response = requests.post(url,data=json.dumps(payload), headers=headers, verify=False).json()
-
    token = response['token']
    return token
+   
 def get_anomalies(auth_token): 
    #Uncomment the line below to get the list of anomalies without filters (only active anomalies will be listed)
    url = nd_cluster+"/sedgeapi/v1/cisco-nir/api/api/v1/anomalies/details"
@@ -33,12 +33,10 @@ def get_anomalies(auth_token):
       "Content-Type" : "application/json",
       "Cookie" : "AuthCookie="+auth_token
    }
-
    return requests.get(url,headers=headers, verify=False).json()
 
 # Store anomalies in a python dictionary.
 anomalies_list=get_anomalies(get_token())
-
 all_anomalies=[]
 
 #Iterate through the anomalies dictionary, and construct a list with the relevant fields of each anomaly
