@@ -26,7 +26,7 @@ def get_token():
    
 def get_anomalies(auth_token): 
    #The line below is a similar API call as made from NDI GUI.
-   url = nd_cluster+"/sedgeapi/v1/cisco-nir/api/api/v1/anomalies/details?filter=cleared%3Afalse+AND+acknowledged%3Afalse&siteGroupName=default&offset=0&count=1000&siteStatus=online"
+   url = nd_cluster+"/sedgeapi/v1/cisco-nir/api/api/v1/anomalies/details?filter=cleared%3Afalse+AND+acknowledged%3Afalse&siteGroupName=default&offset=0&count=10000&siteStatus=online"
    headers = {
       "Content-Type" : "application/json",
       "Cookie" : "AuthCookie="+auth_token
