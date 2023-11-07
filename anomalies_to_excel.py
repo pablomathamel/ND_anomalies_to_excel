@@ -25,10 +25,8 @@ def get_token():
    return token
    
 def get_anomalies(auth_token): 
-   #Uncomment the line below to get the list of anomalies without filters (only active anomalies will be listed)
-   url = nd_cluster+"/sedgeapi/v1/cisco-nir/api/api/v1/anomalies/details"
-   #Uncomment the line below to get the list of anomalies from a specific date (both active and cleared anomalies will be listed)
-   #url = nd_cluster+"/sedgeapi/v1/cisco-nir/api/api/v1/anomalies/details?startDate=2023-10-28"
+   #The line below is a similar API call as made from NDI GUI.
+   url = nd_cluster+"/sedgeapi/v1/cisco-nir/api/api/v1/anomalies/details?filter=cleared%3Afalse+AND+acknowledged%3Afalse&siteGroupName=default&offset=0&count=1000&siteStatus=online"
    headers = {
       "Content-Type" : "application/json",
       "Cookie" : "AuthCookie="+auth_token
