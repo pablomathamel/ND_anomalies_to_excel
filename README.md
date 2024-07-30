@@ -8,8 +8,16 @@ This script queries Cisco Nexus Dashboard Insights application (NDI) for the cur
 
 ## REST vs Offline 
 
-Two different scripts are provided. From a JSON payload processing point of view, they work exactly the same. However, the JSON data source is different for each one: REST script interacts directly with NDIs REST API to make the data extraction easier, however that requires NDI to be reachable to where the script is run. Where that is not possible, a manual REST API call can be made using the following URI: 
+Two different scripts are provided. From a JSON payload processing point of view, they work exactly the same. However, the JSON data source is different for each one: 
+
+- REST script interacts directly with NDIs REST API to make the data extraction easier, however that requires NDI to be reachable to where the script is run. 
+
+- Where that is not possible, a manual REST API call can be made using the following URI: 
+
 "https://<nd-cluster>/sedgeapi/v1/cisco-nir/api/api/v1/anomalies/details?filter=cleared%3Afalse+AND+acknowledged%3Afalse&siteGroupName=default&offset=0&count=10000&siteStatus=online"
+
+The above call can be done using tools like POSTMAN (bear in mind that AuthCookie needs to be provided in the URL call)
+
 The resulting response can be manually copied into a json file, and then processed using the Offline script.
 
 ## Dependencies
