@@ -1,20 +1,19 @@
 import requests
 import json
 import pandas as pd
+import openpyxl
+import variables
 
-#Modify these values to match your environment
-nd_cluster="nd_cluster"
-nd_auth_domain="nd_auth_domain"
-nd_user="nd_user"
-nd_pwd="nd_pwd"
-##
+# The values of nd_auth_domain, nd_user, nd_pwd, and nd_cluster, 
+# are imported from file "variables.py" which should be created in the same directory 
+# where the script is running from. This file is ignored by Git.
 
 def get_token():  
-   url = nd_cluster+"/login"
+   url = variables.nd_cluster+"/login"
    payload = {
-        "domain": nd_auth_domain,
-        "userName": nd_user,
-        "userPasswd": nd_pwd
+        "domain": variables.nd_auth_domain,
+        "userName": variables.nd_user,
+        "userPasswd": variables.nd_pwd
    }
    headers = {
       "Content-Type" : "application/json"
@@ -26,7 +25,7 @@ def get_token():
    
 def get_anomalies(auth_token): 
    #The line below is a similar API call as made from NDI GUI.
-   url = nd_cluster+"/sedgeapi/v1/cisco-nir/api/api/v1/anomalies/details?filter=cleared%3Afalse+AND+acknowledged%3Afalse&siteGroupName=default&offset=0&count=10000&siteStatus=online"
+   url = variables.nd_cluster+"/sedgeapi/v1/cisco-nir/api/api/v1/anomalies/details?filter=cleared%3Afalse+AND+acknowledged%3Afalse&siteGroupName=default&offset=0&count=10000&siteStatus=online"
    headers = {
       "Content-Type" : "application/json",
       "Cookie" : "AuthCookie="+auth_token
@@ -57,6 +56,9 @@ for A in anomalies_list["entries"]:
 
  # Convert the list to a Pandas DataFrame
 df = pd.DataFrame(all_anomalies, columns=["What's wrong","Anomaly Level","Category","Site","Detection Time","Title","Nodes","Status","Last Seen Time","Cleared"])
+
+json_file = './anomalies_list.json'
+df.to_json(json_file,index=False)
 
 # Specify the name of the Excel file
 excel_file = './anomalies_list.xlsx'
