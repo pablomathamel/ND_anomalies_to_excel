@@ -1,4 +1,4 @@
-nd_cluster="https://nd-ndi.swlab.bcn"
-nd_auth_domain="local"
-nd_user="admin"
-nd_pwd="C1sc0123p."
+nd_cluster="URL_ND"
+nd_auth_domain="AUTH_DOMAIN"
+nd_user="username"
+nd_pwd="password"
