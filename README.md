@@ -20,13 +20,17 @@ The above call can be done using tools like POSTMAN (bear in mind that AuthCooki
 
 The resulting response can be manually copied into a json file, and then processed using the Offline script.
 
+## JSON file export 
+
+The file anomalies_to_json_rest.py provides a mechanism to interact with the REST API to extract all the anomalies and its associated information: Affected nodes, Recommendations, Impact, etc. All the date is consolidated in a single JSON file containint all the JSON payloads of the different REST API responses. This file contain data that can be used to train GenAI models or to be analyzed by LLMs.
+
 ## Dependencies
 
-This script has the following dependencies:
+This script has the following library dependencies:
 
 - Python3
 - Requests
 - Json
-- Pandas
+- Datetime
 
 
