@@ -27,6 +27,7 @@ def get_anomalies():
    json_anom=requests.get(url,headers=headers, verify=False).json()
    with open('anomalies_details.json', 'a') as file:
         json.dump(json_anom, file)
+        file.close()
    return json_anom
 
 def get_anomaly_details(anomalies):
@@ -56,6 +57,6 @@ anomalies_list=get_anomalies()
 for A in anomalies_list["entries"]:
     anomaly_ids=[]
     anomaly_ids.append((A["anomalyId"],A["siteName"]))
-
+#
 for A in anomaly_ids:
    get_anomaly_details(A)
