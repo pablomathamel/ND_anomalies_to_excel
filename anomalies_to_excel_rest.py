@@ -6,7 +6,7 @@ import variables
 
 # The values of nd_auth_domain, nd_user, nd_pwd, and nd_cluster, 
 # are imported from file "variables.py" which should be created in the same directory 
-# where the script is running from. This file is ignored by Git.
+# where the script is running from. This file is ignored by Git, as defined by .gitignore.
 
 def get_token():  
    url = variables.nd_cluster+"/login"
